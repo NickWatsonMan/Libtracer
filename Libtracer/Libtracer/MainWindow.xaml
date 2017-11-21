@@ -5,8 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Libtracer"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="Libtracer" Height="350" Width="525">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Button Name="OpenSearch" Grid.Column="1" Grid.Row="0" Content="Поиск" VerticalAlignment="Center" Click="OpenSearchWindow"/>
+        <Button Name="OpenAdmin" Grid.Column="1" Grid.Row="1" Content="Админ" VerticalAlignment="Center" Click="OpenAdminWindow"/>
     </Grid>
 </Window>

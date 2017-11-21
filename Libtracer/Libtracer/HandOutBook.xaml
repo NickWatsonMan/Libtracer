@@ -1,0 +1,26 @@
+﻿<Window x:Class="Libtracer.HandOutBook"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Libtracer"
+        mc:Ignorable="d"
+        Title="HandOutBook" Height="300" Width="300">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Label Content="Id читателя" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14"/>
+        <Label Content="Id книги" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14"/>
+        <TextBox Name="HandOutPersonId" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center"/>
+        <TextBox Name="HandOutBookId" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center"/>
+        <Button Name="HandOut" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" Content="Выдать" FontSize="14" Click="HandOut_Click"/>
+        <Label Name="HandOutSuccess" Grid.Column="1" Grid.Row="2" Content="Выдано" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#FF17BF06" FontWeight="Bold" Visibility="Hidden"/>
+    </Grid>
+</Window>

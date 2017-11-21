@@ -1,0 +1,19 @@
+﻿<Window x:Class="Libtracer.OptionsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Libtracer"
+        mc:Ignorable="d"
+        Title="Admin Options" Height="300" Width="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Button Name="AdminHandOut" Content="Выдать" Grid.Row="0" VerticalAlignment="Bottom" Width="100" Click="AdminHandOut_Click"/>
+        <Button Name="AdminHandIn" Content="Принять" Grid.Row="1" VerticalAlignment="Center" Width="100" Click="AdminHandIn_Click"/>
+        <Button Name="AdminReg" Content="Зарегистрировать" Grid.Row="2" VerticalAlignment="Top" Width="100" Click="AdminReg_Click" />
+    </Grid>
+</Window>

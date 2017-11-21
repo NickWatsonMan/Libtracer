@@ -10,29 +10,21 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Libtracer
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Логика взаимодействия для RegisterPerson.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class RegisterPerson : Window
     {
-        public MainWindow()
+        public RegisterPerson()
         {
             InitializeComponent();
         }
 
-        private void OpenSearchWindow(object sender, RoutedEventArgs e)
-        {
-            this.Hide();
-            SearchWindow _search = new SearchWindow();
-            _search.Show();
-        }
-
-        private void OpenAdminWindow(object sender, RoutedEventArgs e)
+        private void RegPerson_Click(object sender, RoutedEventArgs e)
         {
 
         }
