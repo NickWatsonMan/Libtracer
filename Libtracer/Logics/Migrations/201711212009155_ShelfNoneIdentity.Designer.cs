@@ -7,13 +7,13 @@ namespace Logics.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class JustAnotherMigration0 : IMigrationMetadata
+    public sealed partial class ShelfNoneIdentity : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(JustAnotherMigration0));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(ShelfNoneIdentity));
         
         string IMigrationMetadata.Id
         {
-            get { return "201711211030195_JustAnotherMigration0"; }
+            get { return "201711212009155_ShelfNoneIdentity"; }
         }
         
         string IMigrationMetadata.Source

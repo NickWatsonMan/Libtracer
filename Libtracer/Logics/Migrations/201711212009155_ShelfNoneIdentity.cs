@@ -3,7 +3,7 @@ namespace Logics.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class JustAnotherMigration0 : DbMigration
+    public partial class ShelfNoneIdentity : DbMigration
     {
         public override void Up()
         {
@@ -57,7 +57,7 @@ namespace Logics.Migrations
                 "dbo.Shelves",
                 c => new
                     {
-                        Number = c.Int(nullable: false, identity: true),
+                        Number = c.Int(nullable: false),
                         Department = c.String(),
                     })
                 .PrimaryKey(t => t.Number);

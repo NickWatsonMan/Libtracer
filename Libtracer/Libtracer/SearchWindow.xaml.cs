@@ -27,7 +27,7 @@ namespace Libtracer
 
         private void SearchBook_Click(object sender, RoutedEventArgs e)
         {
-
+            
         }
     }
 }

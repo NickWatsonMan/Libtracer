@@ -48,9 +48,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context.cs" />
-    <Compile Include="Migrations\201711211030195_JustAnotherMigration0.cs" />
-    <Compile Include="Migrations\201711211030195_JustAnotherMigration0.Designer.cs">
-      <DependentUpon>201711211030195_JustAnotherMigration0.cs</DependentUpon>
+    <Compile Include="Migrations\201711212009155_ShelfNoneIdentity.cs" />
+    <Compile Include="Migrations\201711212009155_ShelfNoneIdentity.Designer.cs">
+      <DependentUpon>201711212009155_ShelfNoneIdentity.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Book.cs" />
@@ -64,8 +64,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201711211030195_JustAnotherMigration0.resx">
-      <DependentUpon>201711211030195_JustAnotherMigration0.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201711212009155_ShelfNoneIdentity.resx">
+      <DependentUpon>201711212009155_ShelfNoneIdentity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
