@@ -38,5 +38,10 @@ namespace Libtracer
         {
 
         }
+
+        private void AdminLists_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

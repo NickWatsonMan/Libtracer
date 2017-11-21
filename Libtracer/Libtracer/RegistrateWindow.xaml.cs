@@ -15,20 +15,28 @@ using System.Windows.Shapes;
 namespace Libtracer
 {
     /// <summary>
-    /// Логика взаимодействия для SearchWindow.xaml
+    /// Логика взаимодействия для RegistrateWindow.xaml
     /// </summary>
-    public partial class SearchWindow : Window
+    public partial class RegistrateWindow : Window
     {
-        public SearchWindow()
+        public RegistrateWindow()
         {
             InitializeComponent();
         }
 
-
-        private void SearchBook_Click(object sender, RoutedEventArgs e)
+        private void RegPerson_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
+        private void RegBook_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void RegShelf_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

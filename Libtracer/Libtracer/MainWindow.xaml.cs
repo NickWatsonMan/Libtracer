@@ -23,14 +23,16 @@ namespace Libtracer
     /// </summary>
     public partial class MainWindow : Window
     {
+
         public MainWindow()
         { 
             InitializeComponent();
         }
 
+
+
         private void OpenSearchWindow(object sender, RoutedEventArgs e)
         {
-            this.Hide();
             SearchWindow _search = new SearchWindow();
             _search.Show();
         }

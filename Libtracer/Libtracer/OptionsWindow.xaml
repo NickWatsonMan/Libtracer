@@ -11,9 +11,11 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
-        <Button Name="AdminHandOut" Content="Выдать" Grid.Row="0" VerticalAlignment="Bottom" Width="100" Click="AdminHandOut_Click"/>
+        <Button Name="AdminHandOut" Content="Выдать" Grid.Row="0" VerticalAlignment="Center" Width="100" Click="AdminHandOut_Click"/>
         <Button Name="AdminHandIn" Content="Принять" Grid.Row="1" VerticalAlignment="Center" Width="100" Click="AdminHandIn_Click"/>
-        <Button Name="AdminReg" Content="Зарегистрировать" Grid.Row="2" VerticalAlignment="Top" Width="100" Click="AdminReg_Click" />
+        <Button Name="AdminReg" Content="Зарегистрировать" Grid.Row="2" VerticalAlignment="Center" Width="100" Click="AdminReg_Click" />
+        <Button Name="AdminLists" Content="Списки" Grid.Row="3" VerticalAlignment="Center" Width="100" Click="AdminLists_Click" />
     </Grid>
 </Window>
