@@ -11,7 +11,7 @@ namespace Logics.Models
     public class PersonBook
     {
         [Key]
-        [Column(Order =1)]
+        [Column(Order = 1)]
         public int BookId { get; set; }
         [Key]
         [Column(Order = 2)]

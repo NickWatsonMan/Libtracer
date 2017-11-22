@@ -17,7 +17,7 @@ namespace Logics.Models
         public DateTime DateOfBirth { get; set; }
         public string Phone { get; set; }
         public string Email { get; set; }
-        public bool Role { get; set; } //0 - user, 1 - admin
+        public bool Role { get; set; } //false - user, true - admin
         public string Password { get; set; } //if Person is admin
         
         public virtual List<PersonBook> PersonBooks { get; set; }
