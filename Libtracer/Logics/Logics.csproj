@@ -52,6 +52,10 @@
     <Compile Include="Migrations\201711212009155_ShelfNoneIdentity.Designer.cs">
       <DependentUpon>201711212009155_ShelfNoneIdentity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711221242306_NewBookClass.cs" />
+    <Compile Include="Migrations\201711221242306_NewBookClass.Designer.cs">
+      <DependentUpon>201711221242306_NewBookClass.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\Person.cs" />
@@ -66,6 +70,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201711212009155_ShelfNoneIdentity.resx">
       <DependentUpon>201711212009155_ShelfNoneIdentity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711221242306_NewBookClass.resx">
+      <DependentUpon>201711221242306_NewBookClass.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

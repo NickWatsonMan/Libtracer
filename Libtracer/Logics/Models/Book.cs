@@ -13,8 +13,7 @@ namespace Logics.Models
         public int BookId { get; set; }
         public string Title { get; set; }
         public string Author { get; set; }
-        public bool Available { get; set; } //If the book is available LocationId is ShelfId
-        public int LocationId { get; set; } //If the Book is not available LocationId is PersonId
+        public bool Available { get; set; } 
 
         public virtual Shelf Shelf { get; set; }
         public virtual List<PersonBook> PersonBooks { get; set; }
