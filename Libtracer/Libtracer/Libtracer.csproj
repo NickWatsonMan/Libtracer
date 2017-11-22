@@ -67,14 +67,17 @@
     <Compile Include="HandOutBook.xaml.cs">
       <DependentUpon>HandOutBook.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ListsWindow.xaml.cs">
+      <DependentUpon>ListsWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="OptionsWindow.xaml.cs">
       <DependentUpon>OptionsWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="RegisterPerson.xaml.cs">
-      <DependentUpon>RegisterPerson.xaml</DependentUpon>
+    <Compile Include="RegistrateWindow.xaml.cs">
+      <DependentUpon>RegistrateWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="SearchWindow.xaml.cs">
       <DependentUpon>SearchWindow.xaml</DependentUpon>
@@ -84,6 +87,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="HandOutBook.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ListsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -107,7 +114,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="RegisterPerson.xaml">
+    <Page Include="RegistrateWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

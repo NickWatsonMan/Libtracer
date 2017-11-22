@@ -15,18 +15,13 @@ using System.Windows.Shapes;
 namespace Libtracer
 {
     /// <summary>
-    /// Логика взаимодействия для RegisterPerson.xaml
+    /// Логика взаимодействия для ListsWindow.xaml
     /// </summary>
-    public partial class RegisterPerson : Window
+    public partial class ListsWindow : Window
     {
-        public RegisterPerson()
+        public ListsWindow()
         {
             InitializeComponent();
-        }
-
-        private void RegPerson_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

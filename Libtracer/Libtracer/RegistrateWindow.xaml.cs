@@ -15,31 +15,26 @@ using System.Windows.Shapes;
 namespace Libtracer
 {
     /// <summary>
-    /// Логика взаимодействия для OptionsWindow.xaml
+    /// Логика взаимодействия для RegistrateWindow.xaml
     /// </summary>
-    public partial class OptionsWindow : Window
+    public partial class RegistrateWindow : Window
     {
-        public OptionsWindow()
+        public RegistrateWindow()
         {
             InitializeComponent();
         }
 
-        private void AdminHandOut_Click(object sender, RoutedEventArgs e)
+        private void RegPerson_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void AdminHandIn_Click(object sender, RoutedEventArgs e)
+        private void RegBook_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void AdminReg_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void AdminLists_Click(object sender, RoutedEventArgs e)
+        private void RegShelf_Click(object sender, RoutedEventArgs e)
         {
 
         }

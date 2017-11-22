@@ -1,0 +1,90 @@
+﻿<Window x:Class="Libtracer.RegistrateWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Libtracer"
+        mc:Ignorable="d"
+        Title="RegistrateWindow" Height="300" Width="300">
+    <Grid>
+        <TabControl>
+            <TabItem Header="Person">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.5*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Label Content="Имя" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="12"/>
+                    <Label Content="Фамилия" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="12"/>
+                    <Label Content="Паспорт" Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="12"/>
+                    <Label Content="Дата рождения" Grid.Column="0" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="12"/>
+                    <Label Content="Телефон" Grid.Column="0" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="12"/>
+                    <Label Content="E-mail" Grid.Column="0" Grid.Row="5" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="12"/>
+                    <Label Content="Права" Grid.Column="0" Grid.Row="6" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="12"/>
+                    <Label Content="Пароль (admin)" Grid.Column="0" Grid.Row="7" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="12"/>
+                    <TextBox Name="RegPersonName" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center"/>
+                    <TextBox Name="RegPersonSurname" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center"/>
+                    <TextBox Name="RegPersonPassport" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center"/>
+                    <TextBox Name="RegPersonDate" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" Text="DD:MM:YYYY"/>
+                    <TextBox Name="RegPersonPhone" Grid.Column="1" Grid.Row="4" VerticalAlignment="Center"/>
+                    <TextBox Name="RegPersonMail" Grid.Column="1" Grid.Row="5" VerticalAlignment="Center"/>
+                    <TextBox Name="RegPersonRole" Grid.Column="1" Grid.Row="6" VerticalAlignment="Center"/>
+                    <TextBox Name="RegPersonPassword" Grid.Column="1" Grid.Row="7" VerticalAlignment="Center" Text="Только при регистрации админа"/>
+                    <Button Name="RegPerson" Content="Зарегистрировать" Grid.Column="1" Grid.Row="8" Margin="3" Click="RegPerson_Click"/>
+                    <Label Name="RegPersonSuccess" Grid.Column="0" Grid.Row="8" Content="Зарегистрирован" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF17BF06" FontWeight="Bold" FontSize="10" Visibility="Hidden"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Book">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.5*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Label Content="Название" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="12"/>
+                    <Label Content="Автор" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="12"/>
+                    <Label Content="Полка" Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="12"/>
+                    <TextBox Name="RegBookName" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center"/>
+                    <TextBox Name="RegBookAuthor" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center"/>
+                    <TextBox Name="RegBookShelf" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center"/>
+                    <Button Name="RegBook" Content="Зарегистрировать" Grid.Column="1" Grid.Row="3" Margin="3" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Click="RegBook_Click"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Shelf">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.5*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Label Content="Номер" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="12"/>
+                    <Label Content="Отдел" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="12"/>
+                    <TextBox Name="RegShelfName" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center"/>
+                    <TextBox Name="RegShelfAuthor" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center"/>
+                    <Button Name="RegShelf" Content="Зарегистрировать" Grid.Column="1" Grid.Row="3" Margin="3" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Click="RegShelf_Click"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</Window>
