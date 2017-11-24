@@ -26,22 +26,30 @@ namespace Libtracer
 
         private void AdminHandOut_Click(object sender, RoutedEventArgs e)
         {
-
+            HandOutBook _handOutBook = new HandOutBook();
+            _handOutBook.Show();
+            this.Close();
         }
 
         private void AdminHandIn_Click(object sender, RoutedEventArgs e)
         {
-
+            HandInBook _handInBook = new HandInBook();
+            _handInBook.Show();
+            this.Close();
         }
 
         private void AdminReg_Click(object sender, RoutedEventArgs e)
         {
-
+            RegistrateWindow _registrate = new RegistrateWindow();
+            _registrate.Show();
+            this.Close();
         }
 
         private void AdminLists_Click(object sender, RoutedEventArgs e)
         {
-
+            ListsWindow _lists = new ListsWindow();
+            _lists.Show();
+            this.Close();
         }
     }
 }

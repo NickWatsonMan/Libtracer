@@ -23,5 +23,12 @@ namespace Libtracer
         {
             InitializeComponent();
         }
+
+        private void ListsBack_Click(object sender, RoutedEventArgs e)
+        {
+            OptionsWindow _options = new OptionsWindow();
+            _options.Show();
+            this.Close();
+        }
     }
 }

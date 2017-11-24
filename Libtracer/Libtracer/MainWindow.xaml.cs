@@ -39,7 +39,8 @@ namespace Libtracer
 
         private void OpenAdminWindow(object sender, RoutedEventArgs e)
         {
-
+            LoginWindow _login = new LoginWindow();
+            _login.Show();
         }
     }
 }

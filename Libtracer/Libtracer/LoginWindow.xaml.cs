@@ -27,6 +27,10 @@ namespace Libtracer
         private void AdminEnter_Click(object sender, RoutedEventArgs e)
         {
 
+            //прописать проверку логин / пароль
+            OptionsWindow _options = new OptionsWindow();
+            _options.Show();
+            this.Close();
         }
     }
 }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Libtracer"
         mc:Ignorable="d"
-        Title="RegistrateWindow" Height="300" Width="300">
+        Title="RegistrateWindow" Height="300" Width="300" Top="200" Left="400">
     <Grid>
         <TabControl>
             <TabItem Header="Person">
@@ -85,6 +85,6 @@
                 </Grid>
             </TabItem>
         </TabControl>
-
+        <Button Name="RegistrateBack" Grid.Column="1" Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Right" Content="←" FontSize="14" Click="RegistrateBack_Click"/>
     </Grid>
 </Window>

@@ -28,5 +28,12 @@ namespace Libtracer
         {
 
         }
+
+        private void HandInBack_Click(object sender, RoutedEventArgs e)
+        {
+            OptionsWindow _options = new OptionsWindow();
+            _options.Show();
+            this.Close();
+        }
     }
 }
