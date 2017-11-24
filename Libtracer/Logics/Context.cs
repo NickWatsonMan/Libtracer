@@ -15,30 +15,77 @@ namespace Logics
         }
 
         public DbSet<Book> Books { get; set; }
-        public DbSet<Person> People { get; set; }
+        public DbSet<Person> People { get; set; }   
         public DbSet<Shelf> Shelves { get; set; }
         public DbSet<PersonBook> PersonBooks { get; set; }
 
-        public void AddNewUser(string name, string lastName, int passport, DateTime birth, string phone, string email, bool role, string pwd ){
-            try
-            {
-                People.Add(new Person { Name = name, LastName = lastName, Passport = passport, DateOfBirth = birth, Email = email, Password = pwd, Phone = phone, Role = role });
-                SaveChanges();
-            }
-            catch (Exception err) { Console.WriteLine(err); }
-        }
+        //Events
+        public event Action<IQueryable> OnDataRequested;
 
         //The list of lent books
         public void GetLentBooks()
         {
             var result = PersonBooks.Select(x => new {
-                BookId = x.BookId,
-                BookTitle = x.Book.Title,
-                FirstName = x.Person.Name,
-                LastName = x.Person.LastName,
-                StartDate = x.StartDate,
-                EndDate = x.EndDate
-            }).ToList();
+                BookId = x.BookId.ToString(),
+                BookTitle = x.Book.Title.ToString(),
+                FirstName = x.Person.Name.ToString(),
+                LastName = x.Person.LastName.ToString(),
+                StartDate = x.StartDate.ToString(),
+                EndDate = x.EndDate.ToString()
+            });
+
+            OnDataRequested?.Invoke(result); 
+        }
+
+        //The list of debtors
+        public void GetDebtors()
+        {
+            var result = PersonBooks.Select(x => new {
+                BookId = x.BookId.ToString(),
+                BookTitle = x.Book.Title.ToString(),
+                FirstName = x.Person.Name.ToString(),
+                LastName = x.Person.LastName.ToString(),
+                StartDate = x.StartDate.ToString(),
+                EndDate = x.EndDate.ToString()
+            }).Where(x => DateTime.Parse(x.EndDate) < DateTime.Now);
+
+            OnDataRequested?.Invoke(result);
+        }
+
+        public void GetBook(string title, string author)
+        {
+            try
+            {
+                var result = Books.Select(x => new {
+                    Author = x.Author,
+                    Title = x.Title,
+                    ShelfNumber = x.Shelf.Number,
+                    Department = x.Shelf.Department
+                }).Where(x => x.Title == title || x.Author == author);
+                OnDataRequested?.Invoke(result);
+            }
+            catch (Exception err) { Console.WriteLine(err); }
+            
+        }
+
+        //Add new User
+        public void AddNewUser(string name, string lastName, int passport, DateTime birth, string phone, string email, bool role, string pwd)
+        {
+            //Check if the user with the passport has already signed up
+            var check = People.Where(x => x.Passport == passport).FirstOrDefault();
+            if (check == null)
+            {
+                try
+                {
+                    People.Add(new Person { Name = name, LastName = lastName, Passport = passport, DateOfBirth = birth, Email = email, Password = pwd, Phone = phone, Role = role });
+                    SaveChanges();
+                }
+                catch (Exception err) { Console.WriteLine(err); }
+            }
+            else
+            {
+                Console.WriteLine("The user already exists");
+            }
         }
 
         //Add a new book to the library and put it on the shelf
@@ -93,5 +140,19 @@ namespace Logics
             }
             catch (Exception err) { Console.WriteLine(err); }
         }
+
+        //AddNewShelf
+        public void AddNewShelf(int number, string department)
+        {
+            try
+            {
+                //Add Shelf
+                Shelves.Add(new Shelf { Number = number, Department = department });
+                SaveChanges();
+            }
+            catch (Exception err) { Console.WriteLine(err); }
+        }
+
+
     }
 }
