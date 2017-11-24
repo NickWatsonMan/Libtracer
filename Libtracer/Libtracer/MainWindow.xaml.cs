@@ -23,10 +23,11 @@ namespace Libtracer
     /// </summary>
     public partial class MainWindow : Window
     {
-
+        Context cont = new Context();
         public MainWindow()
         { 
             InitializeComponent();
+            //cont.Shelves.Add(new Shelf { Number = 4, Department = "SF" });
         }
 
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Logics;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,6 +20,8 @@ namespace Libtracer
     /// </summary>
     public partial class HandOutBook : Window
     {
+        Context _context = new Context();
+        public event Action<int, int, DateTime, DateTime> OnHandOut;
         public HandOutBook()
         {
             InitializeComponent();
@@ -26,11 +29,14 @@ namespace Libtracer
 
         private void HandOut_Click(object sender, RoutedEventArgs e)
         {
-
+            //_context.HandOutBook(int.Parse(HandOutPersonId.Text), int.Parse(HandOutBookId.Text), DateTime.Now, DateTime.Now.AddMonths(1));
+            OnHandOut = _context.HandOutBook;
+            OnHandOut?.Invoke(int.Parse(HandOutPersonId.Text), int.Parse(HandOutBookId.Text), DateTime.Now, DateTime.Now.AddMonths(1));
         }
 
         private void HandOutBack_Click(object sender, RoutedEventArgs e)
         {
+            
             OptionsWindow _options = new OptionsWindow();
             _options.Show();
             this.Close();
