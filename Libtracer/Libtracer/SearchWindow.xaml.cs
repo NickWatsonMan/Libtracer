@@ -35,9 +35,12 @@ namespace Libtracer
             {
                 OnSearch = ctx.GetBook;
                 var Search = OnSearch?.Invoke(SearchName.Text, SearchAuthor.Text);
+                
                 foreach(var item in Search)
                 {
-                    SearchList.Items.Add(new { Author = item.Author, Book = item.Title, Shelf = item.Shelf.Number, Department = item.Shelf.Department });
+                   
+                    if((item.Shelf != null)&&(item.Available))
+                    SearchList.Items.Add(new { Author = item.Author.ToString(), Book = item.Title.ToString(), Shelf = item.Shelf.Number.ToString(), Department = item.Shelf.Department.ToString() });
                 }
             }
             catch (Exception ex)

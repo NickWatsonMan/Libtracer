@@ -19,12 +19,10 @@ namespace Logics
         public DbSet<Shelf> Shelves { get; set; }
         public DbSet<PersonBook> PersonBooks { get; set; }
 
-        //Events
-        public event Action<IQueryable> OnDataRequested;
-
         //The list of lent books
-        public IQueryable GetLentBooks()
+        public List<List<String>> GetLentBooks()
         {
+            List<List<string>> list = new List<List<string>>();
             var result = PersonBooks.Select(x => new {
                 BookId = x.BookId.ToString(),
                 BookTitle = x.Book.Title.ToString(),
@@ -34,7 +32,12 @@ namespace Logics
                 EndDate = x.EndDate.ToString()
             });
 
-            return result;
+            foreach (var item in result)
+            {
+                list.Add(new List<string> { item.BookId, item.BookTitle, item.FirstName, item.LastName, item.StartDate, item.EndDate });
+            };
+
+            return list;
         }
 
         //The list of debtors
@@ -57,17 +60,44 @@ namespace Logics
             List<Book> list = new List<Book>();
             try
             {
-                var result = Books.Select(x => new {
+                var result = Books.Select(x => new
+                {
                     Id = x.BookId,
+                    Available = x.Available,
                     Author = x.Author.ToString(),
                     Title = x.Title.ToString(),
                     ShelfNumber = x.Shelf,
                     Department = x.Shelf.Department.ToString()
-                }).Where(x => x.Title == title || x.Author == author);
+                }).Where(x => x.Title == title && x.Author == author);
+
+                if (title != "" && author != "")
+                {
+                    result = Books.Select(x => new
+                    {
+                        Id = x.BookId,
+                        Available = x.Available,
+                        Author = x.Author.ToString(),
+                        Title = x.Title.ToString(),
+                        ShelfNumber = x.Shelf,
+                        Department = x.Shelf.Department.ToString()
+                    }).Where(x => x.Title == title && x.Author == author);
+                }
+                else
+                {
+                    result = Books.Select(x => new
+                    {
+                        Id = x.BookId,
+                        Available = x.Available,
+                        Author = x.Author.ToString(),
+                        Title = x.Title.ToString(),
+                        ShelfNumber = x.Shelf,
+                        Department = x.Shelf.Department.ToString()
+                    }).Where(x => x.Title == title || x.Author == author);
+                }
 
                 foreach (var item in result)
                 {
-                    list.Add(new Book { Title = item.Title, Author = item.Author, BookId = item.Id, Shelf = item.ShelfNumber });
+                    list.Add(new Book {Title = item.Title, Author = item.Author, BookId = item.Id, Shelf = item.ShelfNumber, Available = item.Available });
                 };
 
                 return list;
