@@ -52,19 +52,27 @@ namespace Logics
             return result;
         }
 
-        public IQueryable GetBook(string title, string author)
+        public List<Book> GetBook(string title, string author)
         {
+            List<Book> list = new List<Book>();
             try
             {
                 var result = Books.Select(x => new {
-                    Author = x.Author,
-                    Title = x.Title,
-                    ShelfNumber = x.Shelf.Number,
-                    Department = x.Shelf.Department
+                    Id = x.BookId,
+                    Author = x.Author.ToString(),
+                    Title = x.Title.ToString(),
+                    ShelfNumber = x.Shelf,
+                    Department = x.Shelf.Department.ToString()
                 }).Where(x => x.Title == title || x.Author == author);
-                OnDataRequested?.Invoke(result);
-                return result;
+
+                foreach (var item in result)
+                {
+                    list.Add(new Book { Title = item.Title, Author = item.Author, BookId = item.Id, Shelf = item.ShelfNumber });
+                };
+
+                return list;
             }
+
             catch (Exception err) { Console.WriteLine(err); return null; }
            
         }
@@ -126,6 +134,10 @@ namespace Logics
                     //Give it to the person
                     PersonBooks.Add(new PersonBook { PersonId = personId, BookId = bookId, StartDate = start, EndDate = end });
                     SaveChanges();
+                }
+                else
+                {
+                    throw new Exception();
                 }
             }
             catch (Exception err) { Console.WriteLine(err); }

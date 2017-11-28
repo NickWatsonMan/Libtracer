@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Logics;
+using Logics.Models;
 
 namespace Libtracer
 {
@@ -19,6 +21,8 @@ namespace Libtracer
     /// </summary>
     public partial class SearchWindow : Window
     {
+        Context ctx = new Context();
+        public event Func<string, string, List<Book>> OnSearch;
         public SearchWindow()
         {
             InitializeComponent();
@@ -27,7 +31,9 @@ namespace Libtracer
 
         private void SearchBook_Click(object sender, RoutedEventArgs e)
         {
-            
+
+            OnSearch = ctx.GetBook;
+            var Search = OnSearch?.Invoke(SearchName.Text, SearchAuthor.Text);
         }
 
     }
