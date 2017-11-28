@@ -24,16 +24,27 @@ namespace Libtracer
             InitializeComponent();
         }
 
-        private void HandOut_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         private void HandInBack_Click(object sender, RoutedEventArgs e)
         {
             OptionsWindow _options = new OptionsWindow();
             _options.Show();
             this.Close();
+        }
+
+        private void HandIn_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                HandInPersonId.Text = "";
+                HandInBookId.Text = "";
+                HandInSuccess.Visibility = Visibility.Visible;
+            }
+            catch (Exception ex)
+            {
+                HandInSuccess.Visibility = Visibility.Hidden;
+                MessageBox.Show("Ошибка: " + ex.Message);
+            }
         }
     }
 }

@@ -64,6 +64,7 @@
                     <TextBox Name="RegBookAuthor" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center"/>
                     <TextBox Name="RegBookShelf" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center"/>
                     <Button Name="RegBook" Content="Зарегистрировать" Grid.Column="1" Grid.Row="3" Margin="3" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Click="RegBook_Click"/>
+                    <Label Name="RegBookSuccess" Grid.Column="0" Grid.Row="3" Content="Зарегистрирован" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF17BF06" FontWeight="Bold" FontSize="10" Visibility="Hidden"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Shelf">
@@ -79,9 +80,10 @@
                     </Grid.RowDefinitions>
                     <Label Content="Номер" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="12"/>
                     <Label Content="Отдел" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="12"/>
-                    <TextBox Name="RegShelfName" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center"/>
-                    <TextBox Name="RegShelfAuthor" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center"/>
+                    <TextBox Name="RegShelfNumber" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center"/>
+                    <TextBox Name="RegShelfDepartment" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center"/>
                     <Button Name="RegShelf" Content="Зарегистрировать" Grid.Column="1" Grid.Row="3" Margin="3" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Click="RegShelf_Click"/>
+                    <Label Name="RegShelfSuccess" Grid.Column="0" Grid.Row="2" Content="Зарегистрирован" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF17BF06" FontWeight="Bold" FontSize="10" Visibility="Hidden"/>
                 </Grid>
             </TabItem>
         </TabControl>

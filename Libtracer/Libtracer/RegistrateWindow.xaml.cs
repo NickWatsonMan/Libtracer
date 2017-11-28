@@ -26,17 +26,57 @@ namespace Libtracer
 
         private void RegPerson_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                RegPersonName.Text = "";
+                RegPersonDate.Text = "";
+                RegPersonMail.Text = "";
+                RegPersonPassport.Text = "";
+                RegPersonPassword.Text = "";
+                RegPersonRole.Text = "";
+                RegPersonSurname.Text = "";
+                RegPersonPhone.Text = "";
 
+                RegPersonSuccess.Visibility = Visibility.Visible;
+            }
+            catch (Exception ex)
+            {
+                RegPersonSuccess.Visibility = Visibility.Hidden;
+                MessageBox.Show("Ошибка: " + ex.Message);
+            }
         }
 
         private void RegBook_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                RegBookName.Text = "";
+                RegBookAuthor.Text = "";
+                RegBookShelf.Text = "";
 
+                RegBookSuccess.Visibility = Visibility.Visible;
+            }
+            catch (Exception ex)
+            {
+                RegBookSuccess.Visibility = Visibility.Hidden;
+                MessageBox.Show("Ошибка: " + ex.Message);
+            }
         }
 
         private void RegShelf_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                RegShelfNumber.Text = "";
+                RegShelfDepartment.Text = "";
 
+                RegShelfSuccess.Visibility = Visibility.Visible;
+            }
+            catch (Exception ex)
+            {
+                RegShelfSuccess.Visibility = Visibility.Hidden;
+                MessageBox.Show("Ошибка: " + ex.Message);
+            }
         }
 
         private void RegistrateBack_Click(object sender, RoutedEventArgs e)

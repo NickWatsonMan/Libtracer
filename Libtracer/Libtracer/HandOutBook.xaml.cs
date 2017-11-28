@@ -30,8 +30,19 @@ namespace Libtracer
         private void HandOut_Click(object sender, RoutedEventArgs e)
         {
             //_context.HandOutBook(int.Parse(HandOutPersonId.Text), int.Parse(HandOutBookId.Text), DateTime.Now, DateTime.Now.AddMonths(1));
-            OnHandOut = _context.HandOutBook;
-            OnHandOut?.Invoke(int.Parse(HandOutPersonId.Text), int.Parse(HandOutBookId.Text), DateTime.Now, DateTime.Now.AddMonths(1));
+            try
+            {
+                OnHandOut = _context.HandOutBook;
+                OnHandOut?.Invoke(int.Parse(HandOutPersonId.Text), int.Parse(HandOutBookId.Text), DateTime.Now, DateTime.Now.AddMonths(1));
+                HandOutBookId.Text = "";
+                HandOutPersonId.Text = "";
+                HandOutSuccess.Visibility = Visibility.Visible;
+            }
+            catch (Exception ex)
+            {
+                HandOutSuccess.Visibility = Visibility.Hidden;
+                MessageBox.Show("Ошибка: " + ex.Message);
+            }
         }
 
         private void HandOutBack_Click(object sender, RoutedEventArgs e)
