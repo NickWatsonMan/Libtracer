@@ -12,26 +12,28 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="5*"/>
+            
         </Grid.RowDefinitions>
         <Label Content="Автор" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="16"/>
         <Label Content="Название" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="16"/>
         <TextBox Name="SearchAuthor" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" FontSize="16"/>
         <TextBox Name="SearchName" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" FontSize="16"/>
         <Button Name="SearchBook" Grid.Column="1" Grid.Row="2" Content="Найти" Margin="10" Click="SearchBook_Click"/>
-        <Label Content="Полка" Grid.Column="0" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="16"/>
-        <Label Name="ShelfNumber" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="16"/>
-        <Label Content="Отдел" Grid.Column="0" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="16"/>
-        <Label Name="Department" Grid.Column="1" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="16"/>
-        <Label Content="Автор" Grid.Column="0" Grid.Row="5" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="16"/>
-        <Label Name="Author" Grid.Column="1" Grid.Row="5" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="16"/>
-        <Label Content="Название" Grid.Column="0" Grid.Row="6" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="16"/>
-        <Label Name="Name" Grid.Column="1" Grid.Row="6" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="16"/>
+        <ListView Name="SearchList" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2">
+            <ListView.View>
+                <GridView>
+                    <GridView.Columns>
+                        <GridViewColumn Header="Автор" DisplayMemberBinding="{Binding Author}"></GridViewColumn>
+                        <GridViewColumn Header="Книга" DisplayMemberBinding="{Binding Book}"></GridViewColumn>
+                        <GridViewColumn Header="Полка" DisplayMemberBinding="{Binding Shelf}"></GridViewColumn>
+                        <GridViewColumn Header="Отдел" DisplayMemberBinding="{Binding Department}"></GridViewColumn>
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </Window>

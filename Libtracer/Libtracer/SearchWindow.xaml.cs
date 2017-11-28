@@ -31,9 +31,19 @@ namespace Libtracer
 
         private void SearchBook_Click(object sender, RoutedEventArgs e)
         {
-
-            OnSearch = ctx.GetBook;
-            var Search = OnSearch?.Invoke(SearchName.Text, SearchAuthor.Text);
+            try
+            {
+                OnSearch = ctx.GetBook;
+                var Search = OnSearch?.Invoke(SearchName.Text, SearchAuthor.Text);
+                foreach(var item in Search)
+                {
+                    SearchList.Items.Add(new { Author = item.Author, Book = item.Title, Shelf = item.Shelf.Number, Department = item.Shelf.Department });
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ошибка: " + ex.Message);
+            }
         }
 
     }
