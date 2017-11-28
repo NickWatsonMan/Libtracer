@@ -22,15 +22,17 @@ namespace Libtracer
     {
         Context _context = new Context();
         public event Action<int, int, DateTime, DateTime> OnHandOut;
+
         public HandOutBook()
         {
+           
             InitializeComponent();
         }
 
         private void HandOut_Click(object sender, RoutedEventArgs e)
         {
-            //_context.HandOutBook(int.Parse(HandOutPersonId.Text), int.Parse(HandOutBookId.Text), DateTime.Now, DateTime.Now.AddMonths(1));
-            OnHandOut = _context.HandOutBook;
+            OnHandOut += _context.HandOutBook;
+            //_context.HandOutBook(int.Parse(HandOutPersonId.Text), int.Parse(HandOutBookId.Text), DateTime.Now, DateTime.Now.AddMonths(1));       
             OnHandOut?.Invoke(int.Parse(HandOutPersonId.Text), int.Parse(HandOutBookId.Text), DateTime.Now, DateTime.Now.AddMonths(1));
         }
 

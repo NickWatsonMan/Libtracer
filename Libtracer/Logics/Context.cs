@@ -23,7 +23,7 @@ namespace Logics
         public event Action<IQueryable> OnDataRequested;
 
         //The list of lent books
-        public void GetLentBooks()
+        public IQueryable GetLentBooks()
         {
             var result = PersonBooks.Select(x => new {
                 BookId = x.BookId.ToString(),
@@ -34,11 +34,11 @@ namespace Logics
                 EndDate = x.EndDate.ToString()
             });
 
-            OnDataRequested?.Invoke(result); 
+            return result;
         }
 
         //The list of debtors
-        public void GetDebtors()
+        public IQueryable GetDebtors()
         {
             var result = PersonBooks.Select(x => new {
                 BookId = x.BookId.ToString(),
@@ -49,10 +49,10 @@ namespace Logics
                 EndDate = x.EndDate.ToString()
             }).Where(x => DateTime.Parse(x.EndDate) < DateTime.Now);
 
-            OnDataRequested?.Invoke(result);
+            return result;
         }
 
-        public void GetBook(string title, string author)
+        public IQueryable GetBook(string title, string author)
         {
             try
             {
@@ -63,9 +63,10 @@ namespace Logics
                     Department = x.Shelf.Department
                 }).Where(x => x.Title == title || x.Author == author);
                 OnDataRequested?.Invoke(result);
+                return result;
             }
-            catch (Exception err) { Console.WriteLine(err); }
-            
+            catch (Exception err) { Console.WriteLine(err); return null; }
+           
         }
 
         //Add new User
@@ -105,13 +106,22 @@ namespace Logics
         {
             try
             {
-                var book = Books.Where(x => x.BookId == bookId).FirstOrDefault();
+                var book = Books.Select(x => new
+                {
+                    BookId = x.BookId,
+                    Available = x.Available,
+                    Shelf_Number = x.Shelf.Number
+                }).Where(x => x.BookId == bookId).FirstOrDefault();
                 //check if this book is available
+                
                 if (book.Available)
                 {
+                    var id = book.BookId;
+                    foreach (var item in Books.Where(x => x.Available == true && x.BookId == id))
+                    {
+                        item.Available = false;
+                    }
                     //Remove the book from the shelf
-                    book.Available = false;
-                    book.Shelf = null;
 
                     //Give it to the person
                     PersonBooks.Add(new PersonBook { PersonId = personId, BookId = bookId, StartDate = start, EndDate = end });

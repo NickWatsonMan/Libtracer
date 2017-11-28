@@ -15,7 +15,9 @@ namespace Logics.Models
         public string Author { get; set; }
         public bool Available { get; set; } 
 
-        public virtual Shelf Shelf { get; set; }
+      //  public int Shelf_Number { get; set; }
+
+        public Shelf Shelf { get; set; }
         public virtual List<PersonBook> PersonBooks { get; set; }
     }
 }
