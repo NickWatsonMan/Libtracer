@@ -40,23 +40,15 @@ namespace Libtracer
             try
             {
                 OnList = ctx.GetDebtors;
-                var Search = OnList?.Invoke();
-
-                foreach (var item in Search)
+                var SearchDeb = OnList?.Invoke();
+                foreach (var item in SearchDeb)
                 {
                     DebtorsList.Items.Add(new { Name = item.Person.Name.ToString(), Surname = item.Person.LastName.ToString(), BookName = item.Book.Title.ToString(), BookId = item.Book.BookId.ToString(), Phone = item.Person.Phone, Email = item.Person.Email, EndDate = item.EndDate.ToShortDateString() });
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Ошибка: " + ex.Message);
-            }
-            try
-            {
-                OnList = ctx.GetLentBooks;
-                var Search = OnList?.Invoke();
 
-                foreach (var item in Search)
+                OnList = ctx.GetLentBooks;
+                var SearchBook = OnList?.Invoke();
+                foreach (var item in SearchBook)
                 {
                     BooksList.Items.Add(new { Name = item.Person.Name.ToString(), Surname = item.Person.LastName.ToString(), BookName = item.Book.Title.ToString(), BookId = item.Book.BookId.ToString(), Phone = item.Person.Phone, Email = item.Person.Email, EndDate = item.EndDate.ToShortDateString(), StartDate = item.StartDate.ToShortDateString() });
                 }

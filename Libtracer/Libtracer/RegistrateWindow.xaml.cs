@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Logics;
+using Logics.Models;
 
 namespace Libtracer
 {
@@ -19,6 +21,8 @@ namespace Libtracer
     /// </summary>
     public partial class RegistrateWindow : Window
     {
+        Context ctx = new Context();
+        public event Action<string, string, int> OnRegisterBook;
         public RegistrateWindow()
         {
             InitializeComponent();
@@ -50,6 +54,7 @@ namespace Libtracer
         {
             try
             {
+                OnRegisterBook?.Invoke(RegBookName.Text, RegBookAuthor.Text, int.Parse(RegBookShelf.Text));
                 RegBookName.Text = "";
                 RegBookAuthor.Text = "";
                 RegBookShelf.Text = "";
