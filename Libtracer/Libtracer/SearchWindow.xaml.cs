@@ -35,7 +35,10 @@ namespace Libtracer
             {
                 OnSearch = ctx.GetBook;
                 var Search = OnSearch?.Invoke(SearchName.Text, SearchAuthor.Text);
-                
+
+                SearchAuthor.Clear();
+                SearchName.Clear();
+                SearchList.Items.Clear();
                 foreach(var item in Search)
                 {
                    

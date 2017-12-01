@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Libtracer"
         mc:Ignorable="d"
-        Title="ListsWindow" Height="300" Width="300" Top="200" Left="400">
+        Title="ListsWindow" Height="300" Width="300" Top="200" Left="400" Loaded="Window_Loaded">
     <Grid>
         <TabControl>
             <TabItem Header="Должники">
@@ -15,7 +15,21 @@
             </TabItem>
             <TabItem Header="Выданные книги">
                 <Grid Background="#FFE5E5E5">
-                    <ListBox/>
+                    <ListView Name="DebtorsList" Grid.Column="0" Margin="4,0,-3.8,0.4">
+                        <ListView.View>
+                            <GridView>
+                                <GridView.Columns>
+                                    <GridViewColumn Header="Имя" DisplayMemberBinding="{Binding Name}"></GridViewColumn>
+                                    <GridViewColumn Header="Фамилия" DisplayMemberBinding="{Binding Surname}"></GridViewColumn>
+                                    <GridViewColumn Header="Книга" DisplayMemberBinding="{Binding BookName}"></GridViewColumn>
+                                    <GridViewColumn Header="Книга" DisplayMemberBinding="{Binding BookId}"></GridViewColumn>
+                                    <GridViewColumn Header="Дата" DisplayMemberBinding="{Binding EndDate}"></GridViewColumn>
+                                    <GridViewColumn Header="Телефон" DisplayMemberBinding="{Binding Phone}"></GridViewColumn>
+                                    <GridViewColumn Header="Email" DisplayMemberBinding="{Binding Email}"></GridViewColumn>
+                                </GridView.Columns>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
                 </Grid>
             </TabItem>
         </TabControl>
