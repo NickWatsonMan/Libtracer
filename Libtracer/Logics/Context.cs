@@ -41,18 +41,27 @@ namespace Logics
         }
 
         //The list of debtors
-        public IQueryable GetDebtors()
+        public List<PersonBook> GetDebtors()
         {
+            List<PersonBook> list = new List<PersonBook>();
+
             var result = PersonBooks.Select(x => new {
                 BookId = x.BookId.ToString(),
                 BookTitle = x.Book.Title.ToString(),
+                Person = x.Person,
+                Book = x.Book,
                 FirstName = x.Person.Name.ToString(),
                 LastName = x.Person.LastName.ToString(),
                 StartDate = x.StartDate.ToString(),
                 EndDate = x.EndDate.ToString()
             }).Where(x => DateTime.Parse(x.EndDate) < DateTime.Now);
 
-            return result;
+            foreach (var item in result)
+            {
+                list.Add(new PersonBook { Person = item.Person, Book = item.Book });
+            };
+
+            return list;
         }
 
         public List<Book> GetBook(string title, string author)
