@@ -20,21 +20,23 @@ namespace Logics
         public DbSet<PersonBook> PersonBooks { get; set; }
 
         //The list of lent books
-        public List<List<String>> GetLentBooks()
+        public List<PersonBook> GetLentBooks()
         {
-            List<List<string>> list = new List<List<string>>();
+            List<PersonBook> list = new List<PersonBook>();
             var result = PersonBooks.Select(x => new {
+                Person = x.Person,
+                Book = x.Book,
                 BookId = x.BookId.ToString(),
                 BookTitle = x.Book.Title.ToString(),
                 FirstName = x.Person.Name.ToString(),
                 LastName = x.Person.LastName.ToString(),
-                StartDate = x.StartDate.ToString(),
-                EndDate = x.EndDate.ToString()
+                StartDate = x.StartDate,
+                EndDate = x.EndDate
             });
 
             foreach (var item in result)
             {
-                list.Add(new List<string> { item.BookId, item.BookTitle, item.FirstName, item.LastName, item.StartDate, item.EndDate });
+                list.Add(new PersonBook { Person = item.Person, Book = item.Book, StartDate = item.StartDate, EndDate = item.EndDate });
             };
 
             return list;
@@ -46,19 +48,14 @@ namespace Logics
             List<PersonBook> list = new List<PersonBook>();
 
             var result = PersonBooks.Select(x => new {
-                BookId = x.BookId.ToString(),
-                BookTitle = x.Book.Title.ToString(),
                 Person = x.Person,
                 Book = x.Book,
-                FirstName = x.Person.Name.ToString(),
-                LastName = x.Person.LastName.ToString(),
-                StartDate = x.StartDate.ToString(),
-                EndDate = x.EndDate.ToString()
-            }).Where(x => DateTime.Parse(x.EndDate) < DateTime.Now);
+                EndDate = x.EndDate
+            }).Where(x => x.EndDate < DateTime.Now);
 
             foreach (var item in result)
             {
-                list.Add(new PersonBook { Person = item.Person, Book = item.Book });
+                list.Add(new PersonBook { Person = item.Person, Book = item.Book, EndDate = item.EndDate });
             };
 
             return list;
