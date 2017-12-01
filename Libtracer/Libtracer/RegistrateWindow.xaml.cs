@@ -24,6 +24,7 @@ namespace Libtracer
         Context ctx = new Context();
         public event Action<string, string, int> OnRegisterBook;
         public event Action<int, string> OnRegisterShelf;
+        public event Action<string, string, int, DateTime, string, string, bool, string> OnRegisterPerson;
         public RegistrateWindow()
         {
             InitializeComponent();
@@ -33,6 +34,15 @@ namespace Libtracer
         {
             try
             {
+                OnRegisterPerson = ctx.AddNewUser;
+                if (RegPersonRole.Text == "Admin")
+                {
+                    OnRegisterPerson?.Invoke(RegPersonName.Text, RegPersonSurname.Text, int.Parse(RegPersonPassport.Text), Convert.ToDateTime(RegPersonDate), RegPersonPhone.Text, RegPersonMail.Text, true, RegPersonPassword.Text);
+                } else
+                {
+                    OnRegisterPerson?.Invoke(RegPersonName.Text, RegPersonSurname.Text, int.Parse(RegPersonPassport.Text), Convert.ToDateTime(RegPersonDate), RegPersonPhone.Text, RegPersonMail.Text, false, null);
+                }
+
                 RegPersonName.Text = "";
                 RegPersonDate.Text = "";
                 RegPersonMail.Text = "";
