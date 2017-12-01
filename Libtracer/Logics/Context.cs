@@ -125,7 +125,8 @@ namespace Logics
                     People.Add(new Person { Name = name, LastName = lastName, Passport = passport, DateOfBirth = birth, Email = email, Password = pwd, Phone = phone, Role = role });
                     SaveChanges();
                 }
-                catch (Exception err) { Console.WriteLine(err); }
+                catch (Exception err) { Console.WriteLine(err);}
+
             }
             else
             {
