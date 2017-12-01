@@ -54,6 +54,7 @@ namespace Libtracer
         {
             try
             {
+                OnRegisterBook = ctx.AddBookToLibrary;
                 OnRegisterBook?.Invoke(RegBookName.Text, RegBookAuthor.Text, int.Parse(RegBookShelf.Text));
                 RegBookName.Text = "";
                 RegBookAuthor.Text = "";
