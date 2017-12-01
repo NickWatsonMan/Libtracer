@@ -22,7 +22,7 @@ namespace Libtracer
     public partial class ListsWindow : Window
     {
         Context ctx = new Context();
-        public event Func<List<PersonBook>> OnDebtors;
+        public event Func<List<PersonBook>> OnList;
         public ListsWindow()
         {
             InitializeComponent();
@@ -39,12 +39,26 @@ namespace Libtracer
         {
             try
             {
-                OnDebtors = ctx.GetDebtors;
-                var Search = OnDebtors?.Invoke();
+                OnList = ctx.GetDebtors;
+                var Search = OnList?.Invoke();
 
                 foreach (var item in Search)
                 {
-                    DebtorsList.Items.Add(new { Name = item.Person.Name.ToString(), Surname = item.Person.LastName.ToString(), BookName = item.Book.Title.ToString(), BookId = item.Book.BookId.ToString(), Phone = item.Person.Phone, Email = item.Person.Email, EndDate = item.EndDate.ToString() });
+                    DebtorsList.Items.Add(new { Name = item.Person.Name.ToString(), Surname = item.Person.LastName.ToString(), BookName = item.Book.Title.ToString(), BookId = item.Book.BookId.ToString(), Phone = item.Person.Phone, Email = item.Person.Email, EndDate = item.EndDate.ToShortDateString() });
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ошибка: " + ex.Message);
+            }
+            try
+            {
+                OnList = ctx.GetLentBooks;
+                var Search = OnList?.Invoke();
+
+                foreach (var item in Search)
+                {
+                    BooksList.Items.Add(new { Name = item.Person.Name.ToString(), Surname = item.Person.LastName.ToString(), BookName = item.Book.Title.ToString(), BookId = item.Book.BookId.ToString(), Phone = item.Person.Phone, Email = item.Person.Email, EndDate = item.EndDate.ToShortDateString(), StartDate = item.StartDate.ToShortDateString() });
                 }
             }
             catch (Exception ex)

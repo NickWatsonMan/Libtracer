@@ -29,7 +29,22 @@
             </TabItem>
             <TabItem Header="Выданные книги">
                 <Grid Background="#FFE5E5E5">
-                    
+                    <ListView Name="BooksList" Grid.Column="0" Margin="4,0,-3.8,0.4">
+                        <ListView.View>
+                            <GridView>
+                                <GridView.Columns>
+                                    <GridViewColumn Header="Имя" DisplayMemberBinding="{Binding Name}"></GridViewColumn>
+                                    <GridViewColumn Header="Фамилия" DisplayMemberBinding="{Binding Surname}"></GridViewColumn>
+                                    <GridViewColumn Header="Книга" DisplayMemberBinding="{Binding BookName}"></GridViewColumn>
+                                    <GridViewColumn Header="Id книги" DisplayMemberBinding="{Binding BookId}"></GridViewColumn>
+                                    <GridViewColumn Header="Дата Начала" DisplayMemberBinding="{Binding StartDate}"></GridViewColumn>
+                                    <GridViewColumn Header="Дата Конца" DisplayMemberBinding="{Binding EndDate}"></GridViewColumn>
+                                    <GridViewColumn Header="Телефон" DisplayMemberBinding="{Binding Phone}"></GridViewColumn>
+                                    <GridViewColumn Header="Email" DisplayMemberBinding="{Binding Email}"></GridViewColumn>
+                                </GridView.Columns>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
                 </Grid>
             </TabItem>
         </TabControl>
