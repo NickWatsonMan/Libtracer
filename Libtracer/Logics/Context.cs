@@ -203,13 +203,9 @@ namespace Logics
         //AddNewShelf
         public void AddNewShelf(int number, string department)
         {
-            try
-            {
                 //Add Shelf
                 Shelves.Add(new Shelf { Number = number, Department = department });
                 SaveChanges();
-            }
-            catch (Exception err) { Console.WriteLine(err); }
         }
 
 
