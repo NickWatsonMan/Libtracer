@@ -23,6 +23,7 @@ namespace Libtracer
     {
         Context ctx = new Context();
         public event Action<string, string, int> OnRegisterBook;
+        public event Action<int, string> OnRegisterShelf;
         public RegistrateWindow()
         {
             InitializeComponent();
@@ -72,6 +73,8 @@ namespace Libtracer
         {
             try
             {
+                OnRegisterShelf = ctx.AddNewShelf;
+                OnRegisterShelf?.Invoke(int.Parse(RegShelfNumber.Text), RegShelfDepartment.Text);
                 RegShelfNumber.Text = "";
                 RegShelfDepartment.Text = "";
 
