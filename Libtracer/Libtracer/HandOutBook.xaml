@@ -21,7 +21,7 @@
         <TextBox Name="HandOutPersonId" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center"/>
         <TextBox Name="HandOutBookId" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center"/>
         <Button Name="HandOut" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" Content="Выдать" FontSize="14" Click="HandOut_Click"/>
-        <Label Name="HandOutSuccess" Grid.Column="1" Grid.Row="2" Content="Выдано" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#FF17BF06" FontWeight="Bold" Visibility="Hidden"/>
+        <Label Name="HandOutSuccess" Grid.Column="0" Grid.Row="2" Content="Выдано" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF17BF06" FontWeight="Bold" Visibility="Hidden"/>
         <Button Name="HandOutBack" Grid.Column="1" Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Right" Content="←" FontSize="14" Click="HandOutBack_Click"/>
     </Grid>
 </Window>

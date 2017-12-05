@@ -24,7 +24,7 @@
         <TextBox Name="HandInBookId" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center"/>
         <TextBox Name="HandInShelf" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center"/>
         <Button Name="HandIn" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center" Content="Принять" FontSize="14" Click="HandIn_Click"/>
-        <Label Name="HandInSuccess" Grid.Column="1" Grid.Row="2" Content="Принято" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#FF17BF06" FontWeight="Bold" Visibility="Hidden"/>
+        <Label Name="HandInSuccess" Grid.Column="0" Grid.Row="3" Content="Принято" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF17BF06" FontWeight="Bold" Visibility="Hidden"/>
         <Button Name="HandInBack" Grid.Column="1" Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Right" Content="←" FontSize="14" Click="HandInBack_Click"/>
     </Grid>
 </Window>
