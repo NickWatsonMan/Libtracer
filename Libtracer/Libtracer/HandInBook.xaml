@@ -15,12 +15,15 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
         <Label Content="Id читателя" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14"/>
         <Label Content="Id книги" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14"/>
+        <Label Content="Полка" Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14"/>
         <TextBox Name="HandInPersonId" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center"/>
         <TextBox Name="HandInBookId" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center"/>
-        <Button Name="HandIn" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" Content="Принять" FontSize="14" Click="HandOut_Click"/>
+        <TextBox Name="HandInShelf" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center"/>
+        <Button Name="HandIn" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center" Content="Принять" FontSize="14" Click="HandIn_Click"/>
         <Label Name="HandInSuccess" Grid.Column="1" Grid.Row="2" Content="Принято" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#FF17BF06" FontWeight="Bold" Visibility="Hidden"/>
         <Button Name="HandInBack" Grid.Column="1" Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Right" Content="←" FontSize="14" Click="HandInBack_Click"/>
     </Grid>
