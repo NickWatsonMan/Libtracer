@@ -22,7 +22,7 @@ namespace Libtracer
     public partial class HandInBook : Window
     {
         Context ctx = new Context();
-        public event Action<int, int, int> OnHandIn;
+        public event Func<int, int, int, bool> OnHandIn;
         public HandInBook()
         {
             InitializeComponent();
@@ -33,11 +33,17 @@ namespace Libtracer
             try
             {
                 OnHandIn += ctx.HandInBook;
-                OnHandIn?.Invoke(int.Parse(HandInPersonId.Text), int.Parse(HandInBookId.Text), int.Parse(HandInShelf.Text));
-                HandInSuccess.Visibility = Visibility.Visible;
-                HandInPersonId.Text = "";
-                HandInBookId.Text = "";
-                HandInShelf.Text = "";
+                var res = OnHandIn?.Invoke(int.Parse(HandInPersonId.Text), int.Parse(HandInBookId.Text), int.Parse(HandInShelf.Text));
+                if (res == true)
+                {
+                    HandInSuccess.Visibility = Visibility.Visible;
+                    HandInPersonId.Text = "";
+                    HandInBookId.Text = "";
+                    HandInShelf.Text = "";
+                } else
+                {
+                    MessageBox.Show("Неверные данные");
+                }
             }
             catch (Exception ex)
             {

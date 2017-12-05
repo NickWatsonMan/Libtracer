@@ -16,7 +16,7 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Label Content="Логин" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14"/>
+        <Label Content="Id" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14"/>
         <Label Content="Пароль" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14"/>
         <TextBox Name="AdminLogin" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center"/>
         <PasswordBox Name="AdminPassword" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center"/>

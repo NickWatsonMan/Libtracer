@@ -20,8 +20,8 @@ namespace Libtracer
     /// </summary>
     public partial class HandOutBook : Window
     {
-        Context _context = new Context();
-        public event Action<int, int, DateTime, DateTime> OnHandOut;
+        Context _ctx = new Context();
+        public event Func<int, int, DateTime, DateTime, bool> OnHandOut;
 
         public HandOutBook()
         {
@@ -31,15 +31,20 @@ namespace Libtracer
 
         private void HandOut_Click(object sender, RoutedEventArgs e)
         {
-            OnHandOut += _context.HandOutBook;
-            OnHandOut?.Invoke(int.Parse(HandOutPersonId.Text), int.Parse(HandOutBookId.Text), DateTime.Now, DateTime.Now.AddMonths(1));
+            OnHandOut += _ctx.HandOutBook;
             try
             {
-                OnHandOut = _context.HandOutBook;
-                OnHandOut?.Invoke(int.Parse(HandOutPersonId.Text), int.Parse(HandOutBookId.Text), DateTime.Now, DateTime.Now.AddMonths(1));
-                HandOutBookId.Text = "";
-                HandOutPersonId.Text = "";
-                HandOutSuccess.Visibility = Visibility.Visible;
+                OnHandOut = _ctx.HandOutBook;
+                var res = OnHandOut?.Invoke(int.Parse(HandOutPersonId.Text), int.Parse(HandOutBookId.Text), DateTime.Now, DateTime.Now.AddMonths(1));
+                if (res == true)
+                {
+                    HandOutBookId.Text = "";
+                    HandOutPersonId.Text = "";
+                    HandOutSuccess.Visibility = Visibility.Visible;
+                } else
+                {
+                    MessageBox.Show("Книга недоступна");
+                }
             }
             catch (Exception ex)
             {
