@@ -32,6 +32,7 @@ namespace Libtracer
         {
             try
             {
+                OnLogin += ctx.Auth;
                 var res = OnLogin?.Invoke(AdminLogin.Text, AdminPassword.Password.ToString());
                 if (res == true)
                 {
