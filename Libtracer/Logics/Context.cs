@@ -147,7 +147,7 @@ namespace Logics
         }
 
         //Give the book to the person
-        public void HandOutBook(int personId, int bookId, DateTime start, DateTime end)
+        public bool HandOutBook(int personId, int bookId, DateTime start, DateTime end)
         {
             try
             {
@@ -158,35 +158,38 @@ namespace Logics
                     Shelf_Number = x.Shelf.Number
                 }).Where(x => x.BookId == bookId).FirstOrDefault();
                 //check if this book is available
-                
+                bool checker = book.Available;
+
                 if (book.Available)
                 {
                     var id = book.BookId;
                     foreach (var item in Books.Where(x => x.Available == true && x.BookId == id))
                     {
-                        item.Available = false;
+                        item.Available = !book.Available;
                     }
                     //Remove the book from the shelf
 
                     //Give it to the person
                     PersonBooks.Add(new PersonBook { PersonId = personId, BookId = bookId, StartDate = start, EndDate = end });
                     SaveChanges();
+                    return true;
                 }
                 else
                 {
+                    return false;
                     throw new Exception();
                 }
             }
             catch (Exception err) { Console.WriteLine(err); }
         }
 
-        public void HandInBook(int personId, int bookId, int shelfNumber)
+        public bool HandInBook(int personId, int bookId, int shelfNumber)
         {
             try
             {
                 //Get the book
                 var book = Books.Where(x => x.BookId == bookId).FirstOrDefault();
-                book.Available = true;
+                book.Available = !book.Available;
 
                 //Remove it from PersonBooks
                 var borrowed = PersonBooks.Where(x => x.BookId == bookId).FirstOrDefault();
@@ -196,8 +199,9 @@ namespace Logics
                 var shelf = Shelves.Where(x => x.Number == shelfNumber).FirstOrDefault();
                 book.Shelf = shelf;
                 SaveChanges();
+                return true;
             }
-            catch (Exception err) { Console.WriteLine(err); }
+            catch (Exception err) { return false; Console.WriteLine(err); }
         }
 
         //AddNewShelf
@@ -226,7 +230,5 @@ namespace Logics
             }
             
         }
-
-
     }
 }
