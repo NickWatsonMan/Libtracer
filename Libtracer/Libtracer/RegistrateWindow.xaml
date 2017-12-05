@@ -36,7 +36,7 @@
                     <TextBox Name="RegPersonName" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center"/>
                     <TextBox Name="RegPersonSurname" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center"/>
                     <TextBox Name="RegPersonPassport" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center"/>
-                    <DatePicker Name="RegPersonDate" Grid.Column="1" Grid.Row="3"/>
+                    <DatePicker Name="RegPersonDate" Grid.Column="1" Grid.Row="3" FirstDayOfWeek="Monday" SelectedDateFormat="Short" />
                     <TextBox Name="RegPersonPhone" Grid.Column="1" Grid.Row="4" VerticalAlignment="Center"/>
                     <TextBox Name="RegPersonMail" Grid.Column="1" Grid.Row="5" VerticalAlignment="Center"/>
                     <TextBox Name="RegPersonRole" Grid.Column="1" Grid.Row="6" VerticalAlignment="Center"/>

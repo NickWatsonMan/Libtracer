@@ -180,7 +180,7 @@ namespace Logics
                     throw new Exception();
                 }
             }
-            catch (Exception err) { Console.WriteLine(err); }
+            catch (Exception err) { Console.WriteLine(err); return false; }
         }
 
         public bool HandInBook(int personId, int bookId, int shelfNumber)
@@ -201,7 +201,8 @@ namespace Logics
                 SaveChanges();
                 return true;
             }
-            catch (Exception err) { return false; Console.WriteLine(err); }
+            catch (Exception err) { Console.WriteLine(err); return false; }
+
         }
 
         //AddNewShelf
