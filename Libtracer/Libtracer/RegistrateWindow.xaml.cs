@@ -37,10 +37,10 @@ namespace Libtracer
                 OnRegisterPerson = ctx.AddNewUser;
                 if (RegPersonRole.Text == "Admin")
                 {
-                    OnRegisterPerson?.Invoke(RegPersonName.Text, RegPersonSurname.Text, int.Parse(RegPersonPassport.Text), Convert.ToDateTime(RegPersonDate.Text), RegPersonPhone.Text, RegPersonMail.Text, true, RegPersonPassword.Text);
+                    OnRegisterPerson?.Invoke(RegPersonName.Text, RegPersonSurname.Text, int.Parse(RegPersonPassport.Text), Convert.ToDateTime(RegPersonDate.SelectedDate), RegPersonPhone.Text, RegPersonMail.Text, true, RegPersonPassword.Text);
                 } else
                 {
-                    OnRegisterPerson?.Invoke(RegPersonName.Text, RegPersonSurname.Text, int.Parse(RegPersonPassport.Text), Convert.ToDateTime(RegPersonDate.Text), RegPersonPhone.Text, RegPersonMail.Text, false, null);
+                    OnRegisterPerson?.Invoke(RegPersonName.Text, RegPersonSurname.Text, int.Parse(RegPersonPassport.Text), Convert.ToDateTime(RegPersonDate.SelectedDate), RegPersonPhone.Text, RegPersonMail.Text, false, null);
                 }
 
                 RegPersonName.Text = "";
