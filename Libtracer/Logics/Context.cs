@@ -208,6 +208,23 @@ namespace Logics
                 SaveChanges();
         }
 
+        //Auth
+        public bool Auth(string login, string pwd)
+        {
+
+            var result = People.Where(x => x.Name == login && x.Password == pwd).SingleOrDefault();
+
+            if (result != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+            
+        }
+
 
     }
 }
