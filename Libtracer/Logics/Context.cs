@@ -211,10 +211,12 @@ namespace Logics
         //Auth
         public bool Auth(string login, string pwd)
         {
+            var data = People.Select(x => new {
+                Id = x.PersonId,
+                Password = x.Password
+            }).Where(y => y.Id.ToString() == login).ToList().FirstOrDefault();
 
-            var result = People.Where(x => x.Name == login && x.Password == pwd).SingleOrDefault();
-
-            if (result != null)
+            if (data.Password == pwd && data.Id.ToString() == login)
             {
                 return true;
             }
