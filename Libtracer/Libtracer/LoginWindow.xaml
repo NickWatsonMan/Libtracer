@@ -19,7 +19,7 @@
         <Label Content="Логин" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14"/>
         <Label Content="Пароль" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14"/>
         <TextBox Name="AdminLogin" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center"/>
-        <TextBox Name="AdminPassword" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center"/>
+        <PasswordBox Name="AdminPassword" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center"/>
         <Button Name="AdminEnter" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" Content="Войти" FontSize="14" Click="AdminEnter_Click"/>
     </Grid>
 </Window>
