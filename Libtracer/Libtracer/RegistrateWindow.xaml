@@ -6,12 +6,104 @@
         xmlns:local="clr-namespace:Libtracer"
         mc:Ignorable="d"
         Title="RegistrateWindow" Height="300" Width="300" Top="200" Left="400">
+    <Window.Resources>
+        <Style TargetType="Button" x:Key="ButtonStyle.FlatButton">
+
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="VerticalAlignment" Value="Bottom"/>
+            <Setter Property="Background" Value="#FF0FB99A"/>
+            <Setter Property="FontFamily" Value="Segoe UI Light"/>
+            <Setter Property="FontWeight" Value="UltraLight"/>
+            <Setter Property="Padding" Value="0,0,4,4"/>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+
+                        <Grid Background="Transparent">
+
+                            <Rectangle Fill="{TemplateBinding Background}"
+                                Margin="{TemplateBinding Padding}"
+                                x:Name="rect">
+                                <Rectangle.Effect>
+                                    <DropShadowEffect BlurRadius="0" Color="Black" ShadowDepth="4"/>
+                                </Rectangle.Effect>
+                            </Rectangle>
+
+                            <ContentPresenter HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Margin="{TemplateBinding Padding}"/>
+
+                        </Grid>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Padding" Value="4,4,0,0"/>
+                                <Setter TargetName="rect" Property="Effect" Value="{x:Null}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="Button" x:Key="ButtonStyle.BackButton">
+
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="Background" Value="#FF2B453F"/>
+            <Setter Property="FontFamily" Value="Segoe UI Light"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="UltraLight"/>
+            <Setter Property="Padding" Value="0,0,4,4"/>
+            <Setter Property="Width" Value="22"/>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+
+                        <Grid Background="Transparent">
+
+                            <Rectangle Fill="{TemplateBinding Background}"
+                                Margin="{TemplateBinding Padding}"
+                                x:Name="rect">
+                                <Rectangle.Effect>
+                                    <DropShadowEffect BlurRadius="0" Color="Black" ShadowDepth="4"/>
+                                </Rectangle.Effect>
+                            </Rectangle>
+
+                            <ContentPresenter HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Margin="{TemplateBinding Padding}"/>
+
+                        </Grid>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Padding" Value="4,4,0,0"/>
+                                <Setter TargetName="rect" Property="Effect" Value="{x:Null}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Images/back.png"/>
+        </Grid.Background>
         <TabControl>
             <TabItem Header="Person">
-                <Grid Background="#FFE5E5E5">
+                <Grid>
+                    <Grid.Background>
+                        <ImageBrush ImageSource="/Images/back.png"/>
+                    </Grid.Background>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="0.5*"/>
+                        <ColumnDefinition Width="0.6*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
@@ -25,14 +117,14 @@
                         <RowDefinition/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <Label Content="Имя" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="12"/>
-                    <Label Content="Фамилия" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="12"/>
-                    <Label Content="Паспорт" Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="12"/>
-                    <Label Content="Дата рождения" Grid.Column="0" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="12"/>
-                    <Label Content="Телефон" Grid.Column="0" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="12"/>
-                    <Label Content="E-mail" Grid.Column="0" Grid.Row="5" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="12"/>
-                    <Label Content="Права" Grid.Column="0" Grid.Row="6" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="12"/>
-                    <Label Content="Пароль (admin)" Grid.Column="0" Grid.Row="7" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="12"/>
+                    <Label Content="Имя" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="12" FontWeight="Bold" Foreground="White"/>
+                    <Label Content="Фамилия" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="12" FontWeight="Bold" Foreground="White"/>
+                    <Label Content="Паспорт" Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="12" FontWeight="Bold" Foreground="White"/>
+                    <Label Content="Дата рождения" Grid.Column="0" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="12" FontWeight="Bold" Foreground="White"/>
+                    <Label Content="Телефон" Grid.Column="0" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="12" FontWeight="Bold" Foreground="White"/>
+                    <Label Content="E-mail" Grid.Column="0" Grid.Row="5" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="12" FontWeight="Bold" Foreground="White"/>
+                    <Label Content="Права" Grid.Column="0" Grid.Row="6" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="12" FontWeight="Bold" Foreground="White"/>
+                    <Label Content="Пароль (admin)" Grid.Column="0" Grid.Row="7" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="12" FontWeight="Bold" Foreground="White"/>
                     <TextBox Name="RegPersonName" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center"/>
                     <TextBox Name="RegPersonSurname" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center"/>
                     <TextBox Name="RegPersonPassport" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center"/>
@@ -41,14 +133,17 @@
                     <TextBox Name="RegPersonMail" Grid.Column="1" Grid.Row="5" VerticalAlignment="Center"/>
                     <TextBox Name="RegPersonRole" Grid.Column="1" Grid.Row="6" VerticalAlignment="Center"/>
                     <TextBox Name="RegPersonPassword" Grid.Column="1" Grid.Row="7" VerticalAlignment="Center" Text="Только при регистрации админа"/>
-                    <Button Name="RegPerson" Content="Зарегистрировать" Grid.Column="1" Grid.Row="8" Margin="3" Click="RegPerson_Click"/>
+                    <Button Style="{StaticResource ButtonStyle.FlatButton}" Name="RegPerson" Content="Зарегистрировать" Grid.Column="1" Grid.Row="8"  Click="RegPerson_Click"/>
                     <Label Name="RegPersonSuccess" Grid.Column="0" Grid.Row="8" Content="Зарегистрирован" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF17BF06" FontWeight="Bold" FontSize="10" Visibility="Hidden"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Book">
-                <Grid Background="#FFE5E5E5">
+                <Grid>
+                    <Grid.Background>
+                        <ImageBrush ImageSource="/Images/back.png"/>
+                    </Grid.Background>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="0.5*"/>
+                        <ColumnDefinition Width="0.6*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
@@ -57,20 +152,23 @@
                         <RowDefinition/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <Label Content="Название" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="12"/>
-                    <Label Content="Автор" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="12"/>
-                    <Label Content="Полка" Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="12"/>
+                    <Label Content="Название" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="12" FontWeight="Bold" Foreground="White"/>
+                    <Label Content="Автор" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="12" FontWeight="Bold" Foreground="White"/>
+                    <Label Content="Полка" Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="12" FontWeight="Bold" Foreground="White"/>
                     <TextBox Name="RegBookName" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center"/>
                     <TextBox Name="RegBookAuthor" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center"/>
                     <TextBox Name="RegBookShelf" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center"/>
-                    <Button Name="RegBook" Content="Зарегистрировать" Grid.Column="1" Grid.Row="3" Margin="3" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Click="RegBook_Click"/>
+                    <Button Style="{StaticResource ButtonStyle.FlatButton}" Name="RegBook" Content="Зарегистрировать" Grid.Column="1" Grid.Row="3"  Click="RegBook_Click"/>
                     <Label Name="RegBookSuccess" Grid.Column="0" Grid.Row="3" Content="Зарегистрирован" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF17BF06" FontWeight="Bold" FontSize="10" Visibility="Hidden"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Shelf">
-                <Grid Background="#FFE5E5E5">
+                <Grid>
+                    <Grid.Background>
+                        <ImageBrush ImageSource="/Images/back.png"/>
+                    </Grid.Background>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="0.5*"/>
+                        <ColumnDefinition Width="0.6*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
@@ -78,15 +176,15 @@
                         <RowDefinition/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <Label Content="Номер" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="12"/>
-                    <Label Content="Отдел" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="12"/>
+                    <Label Content="Номер" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="12" FontWeight="Bold" Foreground="White"/>
+                    <Label Content="Отдел" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="12" Foreground="White" FontWeight="Bold"/>
                     <TextBox Name="RegShelfNumber" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center"/>
                     <TextBox Name="RegShelfDepartment" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center"/>
-                    <Button Name="RegShelf" Content="Зарегистрировать" Grid.Column="1" Grid.Row="3" Margin="3" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Click="RegShelf_Click"/>
+                    <Button Style="{StaticResource ButtonStyle.FlatButton}" Name="RegShelf" Content="Зарегистрировать" Grid.Column="1" Grid.Row="3" Margin="3" Click="RegShelf_Click"/>
                     <Label Name="RegShelfSuccess" Grid.Column="0" Grid.Row="2" Content="Зарегистрирован" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF17BF06" FontWeight="Bold" FontSize="10" Visibility="Hidden"/>
                 </Grid>
             </TabItem>
         </TabControl>
-        <Button Name="RegistrateBack" Grid.Column="1" Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Right" Content="←" FontSize="14" Click="RegistrateBack_Click"/>
+        <Button Style="{StaticResource ButtonStyle.BackButton}" Name="RegistrateBack" Grid.Column="1" Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Right" Content="←" FontSize="14" Click="RegistrateBack_Click"/>
     </Grid>
 </Window>

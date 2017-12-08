@@ -6,16 +6,63 @@
         xmlns:local="clr-namespace:Libtracer"
         mc:Ignorable="d"
         Title="Admin Options" Height="300" Width="300" Top="200" Left="400">
+    <Window.Resources>
+        <Style TargetType="Button" x:Key="ButtonStyle.FlatButton">
+
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Background" Value="#FF0FB99A"/>
+            <Setter Property="FontFamily" Value="Segoe UI Light"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="FontWeight" Value="UltraLight"/>
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="Padding" Value="0,0,4,4"/>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+
+                        <Grid Background="Transparent">
+
+                            <Rectangle Fill="{TemplateBinding Background}"
+                                Margin="{TemplateBinding Padding}"
+                                x:Name="rect">
+                                <Rectangle.Effect>
+                                    <DropShadowEffect BlurRadius="0" Color="Black" ShadowDepth="4"/>
+                                </Rectangle.Effect>
+                            </Rectangle>
+
+                            <ContentPresenter HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Margin="{TemplateBinding Padding}"/>
+
+                        </Grid>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Padding" Value="4,4,0,0"/>
+                                <Setter TargetName="rect" Property="Effect" Value="{x:Null}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Images/back.png" Stretch="UniformToFill"/>
+        </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Button Name="AdminHandOut" Content="Выдать" Grid.Row="0" VerticalAlignment="Center" Width="100" Click="AdminHandOut_Click"/>
-        <Button Name="AdminHandIn" Content="Принять" Grid.Row="1" VerticalAlignment="Center" Width="100" Click="AdminHandIn_Click"/>
-        <Button Name="AdminReg" Content="Зарегистрировать" Grid.Row="2" VerticalAlignment="Center" Width="100" Click="AdminReg_Click" />
-        <Button Name="AdminLists" Content="Списки" Grid.Row="3" VerticalAlignment="Center" Width="100" Click="AdminLists_Click" />
+        <Button Style="{StaticResource ButtonStyle.FlatButton}" Name="AdminHandOut" Content="Выдать" Grid.Row="0"  Click="AdminHandOut_Click"/>
+        <Button Style="{StaticResource ButtonStyle.FlatButton}" Name="AdminHandIn" Content="Принять" Grid.Row="1"  Click="AdminHandIn_Click"/>
+        <Button Style="{StaticResource ButtonStyle.FlatButton}" Name="AdminReg" Content="Зарегистрировать" Grid.Row="2"  Click="AdminReg_Click" />
+        <Button Style="{StaticResource ButtonStyle.FlatButton}" Name="AdminLists" Content="Списки" Grid.Row="3"  Click="AdminLists_Click" />
     </Grid>
 </Window>

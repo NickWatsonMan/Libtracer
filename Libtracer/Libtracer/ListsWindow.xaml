@@ -6,11 +6,62 @@
         xmlns:local="clr-namespace:Libtracer"
         mc:Ignorable="d"
         Title="ListsWindow" Height="300" Width="300" Top="200" Left="400" Loaded="Window_Loaded" SizeToContent="Width">
+    <Window.Resources>
+        <Style TargetType="Button" x:Key="ButtonStyle.BackButton">
+
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="Background" Value="#FF2B453F"/>
+            <Setter Property="FontFamily" Value="Segoe UI Light"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="UltraLight"/>
+            <Setter Property="Padding" Value="0,0,4,4"/>
+            <Setter Property="Width" Value="22"/>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+
+                        <Grid Background="Transparent">
+
+                            <Rectangle Fill="{TemplateBinding Background}"
+                                Margin="{TemplateBinding Padding}"
+                                x:Name="rect">
+                                <Rectangle.Effect>
+                                    <DropShadowEffect BlurRadius="0" Color="Black" ShadowDepth="4"/>
+                                </Rectangle.Effect>
+                            </Rectangle>
+
+                            <ContentPresenter HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Margin="{TemplateBinding Padding}"/>
+
+                        </Grid>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Padding" Value="4,4,0,0"/>
+                                <Setter TargetName="rect" Property="Effect" Value="{x:Null}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Images/back.png"/>
+        </Grid.Background>
         <TabControl>
             <TabItem Header="Должники">
-                <Grid Background="#FFE5E5E5">
-                    <ListView Name="DebtorsList" Grid.Column="0" Margin="4,0,-3.8,0.4">
+                <Grid>
+                    <Grid.Background>
+                        <ImageBrush ImageSource="/Images/back.png"/>
+                    </Grid.Background>
+                    <ListView Opacity="0.5" Name="DebtorsList" Grid.Column="0" >
                         <ListView.View>
                             <GridView>
                                 <GridView.Columns>
@@ -28,8 +79,11 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Выданные книги">
-                <Grid Background="#FFE5E5E5">
-                    <ListView Name="BooksList" Grid.Column="0" Margin="4,0,-3.8,0.4">
+                <Grid>
+                    <Grid.Background>
+                        <ImageBrush ImageSource="/Images/back.png"/>
+                    </Grid.Background>
+                    <ListView Opacity="0.5" Name="BooksList" Grid.Column="0">
                         <ListView.View>
                             <GridView>
                                 <GridView.Columns>
@@ -48,6 +102,6 @@
                 </Grid>
             </TabItem>
         </TabControl>
-        <Button Name="ListsBack" Grid.Column="1" Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Right" Content="←" FontSize="14" Click="ListsBack_Click"/>
+        <Button Style="{StaticResource ButtonStyle.BackButton}" Name="ListsBack" Grid.Column="1" Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Right" Content="←" FontSize="14" Click="ListsBack_Click"/>
     </Grid>
 </Window>

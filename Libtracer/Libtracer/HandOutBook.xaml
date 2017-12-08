@@ -6,7 +6,98 @@
         xmlns:local="clr-namespace:Libtracer"
         mc:Ignorable="d"
         Title="HandOutBook" Height="300" Width="300" Top="200" Left="400">
+
+    <Window.Resources>
+        <Style TargetType="Button" x:Key="ButtonStyle.FlatButton">
+
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Background" Value="#FF0FB99A"/>
+            <Setter Property="FontFamily" Value="Segoe UI Light"/>
+            <Setter Property="FontSize" Value="17"/>
+            <Setter Property="FontWeight" Value="UltraLight"/>
+            <Setter Property="Padding" Value="0,0,4,4"/>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+
+                        <Grid Background="Transparent">
+
+                            <Rectangle Fill="{TemplateBinding Background}"
+                                Margin="{TemplateBinding Padding}"
+                                x:Name="rect">
+                                <Rectangle.Effect>
+                                    <DropShadowEffect BlurRadius="0" Color="Black" ShadowDepth="4"/>
+                                </Rectangle.Effect>
+                            </Rectangle>
+
+                            <ContentPresenter HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Margin="{TemplateBinding Padding}"/>
+
+                        </Grid>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Padding" Value="4,4,0,0"/>
+                                <Setter TargetName="rect" Property="Effect" Value="{x:Null}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="Button" x:Key="ButtonStyle.BackButton">
+
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="Background" Value="#FF2B453F"/>
+            <Setter Property="FontFamily" Value="Segoe UI Light"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="UltraLight"/>
+            <Setter Property="Padding" Value="0,0,4,4"/>
+            <Setter Property="Width" Value="22"/>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+
+                        <Grid Background="Transparent">
+
+                            <Rectangle Fill="{TemplateBinding Background}"
+                                Margin="{TemplateBinding Padding}"
+                                x:Name="rect">
+                                <Rectangle.Effect>
+                                    <DropShadowEffect BlurRadius="0" Color="Black" ShadowDepth="4"/>
+                                </Rectangle.Effect>
+                            </Rectangle>
+
+                            <ContentPresenter HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Margin="{TemplateBinding Padding}"/>
+
+                        </Grid>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Padding" Value="4,4,0,0"/>
+                                <Setter TargetName="rect" Property="Effect" Value="{x:Null}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Images/back.png"/>
+        </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.5*"/>
             <ColumnDefinition Width="*"/>
@@ -16,12 +107,12 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Label Content="Id читателя" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14"/>
-        <Label Content="Id книги" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14"/>
+        <Label Content="Id читателя" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14" Foreground="White" FontWeight="Bold"/>
+        <Label Content="Id книги" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14" Foreground="White" FontWeight="Bold"/>
         <TextBox Name="HandOutPersonId" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center"/>
         <TextBox Name="HandOutBookId" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center"/>
-        <Button Name="HandOut" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" Content="Выдать" FontSize="14" Click="HandOut_Click"/>
+        <Button Style="{StaticResource ButtonStyle.FlatButton}" Name="HandOut" Grid.Column="1" Grid.Row="2" Content="Выдать" Click="HandOut_Click"/>
         <Label Name="HandOutSuccess" Grid.Column="0" Grid.Row="2" Content="Выдано" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF17BF06" FontWeight="Bold" Visibility="Hidden"/>
-        <Button Name="HandOutBack" Grid.Column="1" Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Right" Content="←" FontSize="14" Click="HandOutBack_Click"/>
+        <Button Style="{StaticResource ButtonStyle.BackButton}" Name="HandOutBack" Grid.Column="1" Grid.Row="0" Content="←" Click="HandOutBack_Click"/>
     </Grid>
 </Window>
