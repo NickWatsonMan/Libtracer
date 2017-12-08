@@ -6,6 +6,52 @@
         xmlns:local="clr-namespace:Libtracer"
         mc:Ignorable="d"
         Title="Libtracer" Height="350" Width="525" Top="200" Left="400">
+
+    <Window.Resources>
+        <Style TargetType="Button" x:Key="ButtonStyle.FlatButton">
+
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Background" Value="#FF0FB99A"/>
+            <Setter Property="FontFamily" Value="Segoe UI Light"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontWeight" Value="UltraLight"/>
+            <Setter Property="Width" Value="200"/>
+            <Setter Property="Height" Value="75"/>
+            <Setter Property="Padding" Value="0,0,4,4"/>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+
+                        <Grid Background="Transparent">
+
+                            <Rectangle Fill="{TemplateBinding Background}"
+                                Margin="{TemplateBinding Padding}"
+                                x:Name="rect">
+                                <Rectangle.Effect>
+                                    <DropShadowEffect BlurRadius="0" Color="Black" ShadowDepth="4"/>
+                                </Rectangle.Effect>
+                            </Rectangle>
+
+                            <ContentPresenter HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Margin="{TemplateBinding Padding}"/>
+
+                        </Grid>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Padding" Value="4,4,0,0"/>
+                                <Setter TargetName="rect" Property="Effect" Value="{x:Null}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -16,7 +62,7 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Button Name="OpenSearch" Grid.Column="1" Grid.Row="0" Content="Поиск" VerticalAlignment="Center" Click="OpenSearchWindow"/>
-        <Button Name="OpenAdmin" Grid.Column="1" Grid.Row="1" Content="Админ" VerticalAlignment="Center" Click="OpenAdminWindow"/>
+        <Button Style="{StaticResource ButtonStyle.FlatButton}" Name="OpenSearch" Grid.Column="1" Grid.Row="0" Content="Поиск" VerticalAlignment="Center" Click="OpenSearchWindow"/>
+        <Button Style="{StaticResource ButtonStyle.FlatButton}" Name="OpenAdmin" Grid.Column="1" Grid.Row="1" Content="Админ" VerticalAlignment="Center" Click="OpenAdminWindow"/>
     </Grid>
 </Window>
