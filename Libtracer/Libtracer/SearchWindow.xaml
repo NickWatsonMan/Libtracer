@@ -6,7 +6,62 @@
         xmlns:local="clr-namespace:Libtracer"
         mc:Ignorable="d"
         Title="Libtracer Search" Height="350" Width="525" Top="200" Left="400">
+    <Window.Resources>
+        <Style TargetType="Button" x:Key="ButtonStyle.FlatButton">
+
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Background" Value="#FF0FB99A"/>
+            <Setter Property="FontFamily" Value="Segoe UI Light"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="UltraLight"/>
+            <Setter Property="Padding" Value="0,0,4,4"/>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+
+                        <Grid Background="Transparent">
+
+                            <Rectangle Fill="{TemplateBinding Background}"
+
+                                x:Name="rect">
+                                <Rectangle.Effect>
+                                    <DropShadowEffect BlurRadius="0" Color="Black" ShadowDepth="4"/>
+                                </Rectangle.Effect>
+                            </Rectangle>
+
+                            <ContentPresenter HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Margin="{TemplateBinding Padding}"/>
+
+                        </Grid>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Padding" Value="4,4,0,0"/>
+                                <Setter TargetName="rect" Property="Effect" Value="{x:Null}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Images/back.png">
+                <ImageBrush.Transform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                    </TransformGroup>
+                </ImageBrush.Transform>
+            </ImageBrush>
+        </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.4*"/>
             <ColumnDefinition Width="*"/>
@@ -18,12 +73,12 @@
             <RowDefinition Height="5*"/>
             
         </Grid.RowDefinitions>
-        <Label Content="Автор" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="16"/>
+        <Label Content="Автор" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="16" FontFamily="Segoe UI Light"/>
         <Label Content="Название" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="16"/>
         <TextBox Name="SearchAuthor" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" FontSize="16"/>
         <TextBox Name="SearchName" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" FontSize="16"/>
-        <Button Name="SearchBook" Grid.Column="1" Grid.Row="2" Content="Найти" Margin="10" Click="SearchBook_Click"/>
-        <ListView Name="SearchList" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2">
+        <Button Style="{StaticResource ButtonStyle.FlatButton}" Name="SearchBook" Grid.Column="1" Grid.Row="2" Content="Найти" Click="SearchBook_Click"/>
+        <ListView Name="SearchList" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" Opacity="0.7">
             <ListView.View>
                 <GridView>
                     <GridView.Columns>
