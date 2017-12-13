@@ -13,9 +13,9 @@
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="Background" Value="#FF0FB99A"/>
             <Setter Property="FontFamily" Value="Segoe UI Light"/>
-            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="FontSize" Value="18"/>
             <Setter Property="FontWeight" Value="UltraLight"/>
-            <Setter Property="Width" Value="100"/>
+            <Setter Property="Width" Value="150"/>
             <Setter Property="Padding" Value="0,0,4,4"/>
 
             <Setter Property="Template">
