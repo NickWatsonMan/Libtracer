@@ -61,7 +61,7 @@
                     <Grid.Background>
                         <ImageBrush ImageSource="/Images/back.png"/>
                     </Grid.Background>
-                    <ListView Opacity="0.5" Name="DebtorsList" Grid.Column="0" >
+                    <ListView Opacity="0.7" Name="DebtorsList" Grid.Column="0" >
                         <ListView.View>
                             <GridView>
                                 <GridView.Columns>
@@ -83,7 +83,7 @@
                     <Grid.Background>
                         <ImageBrush ImageSource="/Images/back.png"/>
                     </Grid.Background>
-                    <ListView Opacity="0.5" Name="BooksList" Grid.Column="0">
+                    <ListView Opacity="0.7" Name="BooksList" Grid.Column="0">
                         <ListView.View>
                             <GridView>
                                 <GridView.Columns>
