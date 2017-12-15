@@ -22,7 +22,7 @@ namespace Libtracer
     public partial class ListsWindow : Window
     {
         Context ctx = new Context();
-        public event Func<List<PersonBook>> OnList;
+        public event Func<Task<List<PersonBook>>> OnList;
         public ListsWindow()
         {
             InitializeComponent();
@@ -35,19 +35,19 @@ namespace Libtracer
             this.Close();
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
             try
             {
                 OnList = ctx.GetDebtors;
-                var SearchDeb = OnList?.Invoke();
+                var SearchDeb = await OnList?.Invoke();
                 foreach (var item in SearchDeb)
                 {
                     DebtorsList.Items.Add(new { Name = item.Person.Name.ToString(), Surname = item.Person.LastName.ToString(), BookName = item.Book.Title.ToString(), BookId = item.Book.BookId.ToString(), Phone = item.Person.Phone, Email = item.Person.Email, EndDate = item.EndDate.ToShortDateString() });
                 }
 
                 OnList = ctx.GetLentBooks;
-                var SearchBook = OnList?.Invoke();
+                var SearchBook = await OnList?.Invoke();
                 foreach (var item in SearchBook)
                 {
                     BooksList.Items.Add(new { Name = item.Person.Name.ToString(), Surname = item.Person.LastName.ToString(), BookName = item.Book.Title.ToString(), BookId = item.Book.BookId.ToString(), Phone = item.Person.Phone, Email = item.Person.Email, EndDate = item.EndDate.ToShortDateString(), StartDate = item.StartDate.ToShortDateString() });

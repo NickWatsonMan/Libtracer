@@ -22,19 +22,19 @@ namespace Libtracer
     public partial class SearchWindow : Window
     {
         Context ctx = new Context();
-        public event Func<string, string, List<Book>> OnSearch;
+        public event Func<string, string, Task<List<Book>>> OnSearch;
         public SearchWindow()
         {
             InitializeComponent();
         }
 
 
-        private void SearchBook_Click(object sender, RoutedEventArgs e)
+        private async void SearchBook_Click(object sender, RoutedEventArgs e)
         {
             try
             {
                 OnSearch = ctx.GetBook;
-                var Search = OnSearch?.Invoke(SearchName.Text, SearchAuthor.Text);
+                var Search = await OnSearch?.Invoke(SearchName.Text, SearchAuthor.Text);
 
                 SearchAuthor.Clear();
                 SearchName.Clear();
