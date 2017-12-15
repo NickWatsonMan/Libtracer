@@ -20,18 +20,13 @@ namespace Logics
         public DbSet<PersonBook> PersonBooks { get; set; }
 
         //The list of lent books
-        public List<PersonBook> GetLentBooks()
+        public async Task<List<PersonBook>> GetLentBooks()
         {
             List<PersonBook> list = new List<PersonBook>();
-            var result = PersonBooks.Select(x => new {
-                Person = x.Person,
-                Book = x.Book,
-                BookId = x.BookId.ToString(),
-                BookTitle = x.Book.Title.ToString(),
-                FirstName = x.Person.Name.ToString(),
-                LastName = x.Person.LastName.ToString(),
-                StartDate = x.StartDate,
-                EndDate = x.EndDate
+
+            var result = await Task<List<Book>>.Run(() =>
+            {
+                return PersonBooks;
             });
 
             foreach (var item in result)
@@ -43,15 +38,15 @@ namespace Logics
         }
 
         //The list of debtors
-        public List<PersonBook> GetDebtors()
+        public async Task<List<PersonBook>> GetDebtors()
         {
             List<PersonBook> list = new List<PersonBook>();
 
-            var result = PersonBooks.Select(x => new {
-                Person = x.Person,
-                Book = x.Book,
-                EndDate = x.EndDate
-            }).Where(x => x.EndDate < DateTime.Now);
+            var result = await Task<List<Book>>.Run(() =>
+            {
+                return PersonBooks.Where(x => x.EndDate < DateTime.Now);
+
+            });
 
             foreach (var item in result)
             {
@@ -61,49 +56,38 @@ namespace Logics
             return list;
         }
 
-        public List<Book> GetBook(string title, string author)
+        public async Task<List<Book>> GetBook(string title, string author)
         {
             List<Book> list = new List<Book>();
             try
             {
-                var result = Books.Select(x => new
+                var result = await Task <List<Book>>.Run(() =>
                 {
-                    Id = x.BookId,
-                    Available = x.Available,
-                    Author = x.Author.ToString(),
-                    Title = x.Title.ToString(),
-                    ShelfNumber = x.Shelf,
-                    Department = x.Shelf.Department.ToString()
-                }).Where(x => x.Title == title && x.Author == author);
+                    return Books.Where(x => x.Title == title && x.Author == author);
+
+                });
 
                 if (title != "" && author != "")
                 {
-                    result = Books.Select(x => new
+                    result = await Task<List<Book>>.Run(() =>
                     {
-                        Id = x.BookId,
-                        Available = x.Available,
-                        Author = x.Author.ToString(),
-                        Title = x.Title.ToString(),
-                        ShelfNumber = x.Shelf,
-                        Department = x.Shelf.Department.ToString()
-                    }).Where(x => x.Title == title && x.Author == author);
-                }
+                        return Books.Where(x => x.Title == title && x.Author == author);
+
+                    });
+
+                } 
                 else
                 {
-                    result = Books.Select(x => new
+                    result = await Task<List<Book>>.Run(() =>
                     {
-                        Id = x.BookId,
-                        Available = x.Available,
-                        Author = x.Author.ToString(),
-                        Title = x.Title.ToString(),
-                        ShelfNumber = x.Shelf,
-                        Department = x.Shelf.Department.ToString()
-                    }).Where(x => x.Title == title || x.Author == author);
+                        return Books.Where(x => x.Title == title || x.Author == author);
+
+                    });
                 }
 
                 foreach (var item in result)
                 {
-                    list.Add(new Book {Title = item.Title, Author = item.Author, BookId = item.Id, Shelf = item.ShelfNumber, Available = item.Available });
+                    list.Add(new Book {Title = item.Title, Author = item.Author, BookId = item.BookId, Shelf = item.Shelf, Available = item.Available});
                 };
 
                 return list;
@@ -114,7 +98,7 @@ namespace Logics
         }
 
         //Add new User
-        public void AddNewUser(string name, string lastName, int passport, DateTime birth, string phone, string email, bool role, string pwd)
+        public  void AddNewUser(string name, string lastName, int passport, DateTime birth, string phone, string email, bool role, string pwd)
         {
             //Check if the user with the passport has already signed up
             var check = People.Where(x => x.Passport == passport).FirstOrDefault();
@@ -123,7 +107,7 @@ namespace Logics
                 try
                 {
                     People.Add(new Person { Name = name, LastName = lastName, Passport = passport, DateOfBirth = birth, Email = email, Password = pwd, Phone = phone, Role = role });
-                    SaveChanges();
+                     SaveChanges();
                 }
                 catch (Exception err) { Console.WriteLine(err);}
 
